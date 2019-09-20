@@ -9,11 +9,11 @@ const InputWrapper = styled.div`
 class Add extends Component {
 	add = () => {
 		const inputText = document.querySelector('input[type="text"]');
-		console.log(inputText.value);
-		this.props.addLink(inputText.value);
+
+		if (inputText.value === '' || inputText.value == null) {
+		} else this.props.addLink(inputText.value);
 	};
 	render() {
-		console.log(this.props);
 		return (
 			<InputWrapper>
 				<input type="text" placeholder="paste link" />

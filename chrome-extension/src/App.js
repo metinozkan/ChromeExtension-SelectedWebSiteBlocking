@@ -13,23 +13,44 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			links: [],
-			controlLink: []
+			links: ''
 		};
 	}
 
 	addLink = (link) => {
-		this.state.links.push({ link });
-		console.log('gercek');
-		console.log('state de ki link', this.state.links);
-
-		const linksLocal = window.localStorage.getItem('links');
-		console.log(linksLocal);
+		const localLinks = JSON.parse(window.localStorage.getItem('links'));
+		if (localLinks != null) {
+			const controlLocalLinks = this.controlType(localLinks);
+			if (this.isThereLocal(link, controlLocalLinks)) {
+				console.log('zaten var');
+			} else {
+				controlLocalLinks.push(link);
+				this.updateLocalStroge(controlLocalLinks);
+			}
+		} else this.updateLocalStroge(link);
 	};
 
+	controlType = (value) => {
+		if (typeof value === 'object' && value.constructor === Array) return value;
+		else {
+			var controlLocalLinks = JSON.parse('[' + window.localStorage.getItem('links') + ']');
+			return controlLocalLinks;
+		}
+	};
+
+	isThereLocal = (link, localLinks) => {
+		if (localLinks.includes(link)) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	updateLocalStroge = (newLinks) => {
+		window.localStorage.setItem('links', JSON.stringify(newLinks));
+	};
 	getLink = () => {
 		const local = window.localStorage.getItem('links');
-		console.log(local);
+		console.log(local.link);
 	};
 
 	render() {
