@@ -23,6 +23,7 @@ class App extends Component {
 			const controlLocalLinks = this.controlType(localLinks);
 			if (this.isThereLocal(link, controlLocalLinks)) {
 				console.log('zaten var');
+				window.alert('Link zaten kayıtlı');
 			} else {
 				controlLocalLinks.push(link);
 				this.updateLocalStroge(controlLocalLinks);
@@ -48,10 +49,10 @@ class App extends Component {
 	updateLocalStroge = (newLinks) => {
 		window.localStorage.setItem('links', JSON.stringify(newLinks));
 	};
-	getLink = () => {
-		const local = window.localStorage.getItem('links');
-		console.log(local.link);
-	};
+	// getLink = () => {
+	// 	const local = window.localStorage.getItem('links');
+	// 	console.log(local.link);
+	// };
 
 	render() {
 		return (

@@ -11,7 +11,11 @@ class Add extends Component {
 		const inputText = document.querySelector('input[type="text"]');
 
 		if (inputText.value === '' || inputText.value == null) {
-		} else this.props.addLink(inputText.value);
+			return false;
+		} else {
+			this.props.addLink(inputText.value);
+			inputText.value = '';
+		}
 	};
 	render() {
 		return (

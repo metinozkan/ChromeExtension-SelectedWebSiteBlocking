@@ -1,25 +1,23 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }	    
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"manifest_version": 2,
+	"name": "Block webSites",
+	"short_name": "Block website",
+	"author": "metin özkan",
+	"version": "1.0.2",
+	"description": "Replace new tab screen with amazing creativity.",
+	"incognito": "split",
+	"background": {
+		"scripts": [ "./app/background.js" ]
+	},
+	"icons": {
+		"16": "favicon.ico",
+		"48": "logo512.png"
+	},
+	"browser_action": {
+		"default_popup": "index.html",
+		"default_title": "Open the popup"
+	},
+	"content_security_policy": "script-src 'self' 'sha256-5As4+3YpY...'; object-src 'self'",
+
+	"permissions": [ "activeTab", "declarativeContent", "webRequestBlocking", "webRequest", "https://*.twitter.com/*/" ]
 }
